@@ -1,0 +1,57 @@
+<div class="panel modPanel">
+    <form #modChannels="ngForm" (ngSubmit)="moderatorChannelAccess(modChannels)">
+        <h1>User Channel Access</h1>
+        <span class="grid">
+            <div>
+                <label for="group">Group: </label>
+                <select ngModel ng-mode="select" name="group">
+                    <option 
+                        *ngFor="let group of moderatorGroups" 
+                        [value]="group.group" 
+                        (click)="setSelectedModeratorGroup(group.group)"
+                    >{{group.group}}</option>
+                </select>
+            </div>
+            <div *ngIf="modSelectedGroup">
+                <label for="user">User: </label>
+                <select ngModel ng-model="select" name="user">
+                    <option 
+                        *ngFor="let user of moderatorUsers" 
+                        [value]="user.username" 
+                        (click)="setSelectedUser(user.username)"
+                    >{{user.username}}</option>
+                </select>
+            </div>
+        </span>
+        <div *ngIf="user">
+            <div>
+                <em>Hold CTRL to select multiple channels, if a channel is not selected, the user will not have access to it</em><br>
+                <select ngModel ng-select="select" name="channels" multiple>
+                    <option *ngFor="let channel of modSelectedGroup.channels">{{channel}}</option>
+                </select>
+            </div><br />
+            <span class="response-message">{{moderatorChannelAccessMessage}}</span><br>
+            <button>Submit Channel Changes</button>
+        </div>
+    </form>
+    <hr />
+    <form #modChannelAdd="ngForm" (ngSubmit)="moderatorChannelCreate(modChannelAdd)">
+        <h1>Add channel to group</h1>
+        <div class="grid">
+            <label>Group: </label>
+            <select ngModel ng-mode="select" name="group">
+                <option 
+                    *ngFor="let group of moderatorGroups" 
+                    [value]="group.group" 
+                    (click)="setSelectedGroupForChannels(group.group)"
+                >{{group.group}}</option>
+            </select>
+        </div>
+        <div>
+            <label *ngIf="modChannelSelectedGroup">Channel:</label>
+            <input *ngIf="modChannelSelectedGroup" ngModel name="channel" placeholder="Enter channel name" type="text"><br />
+            <span class="response-message">{{moderatorChannelCreateMessage}}</span><br>
+        </div>
+        <button *ngIf="modChannelSelectedGroup" type="submit">Add Channel</button>
+    </form>
+</div>

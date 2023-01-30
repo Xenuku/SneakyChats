@@ -1,0 +1,63 @@
+.profilePicture {
+    height: 100px;
+    width: 100px;
+    border-radius: 25%;
+    padding-top: 10px;
+}
+.profileUploadIcon {
+    margin-left: -10px;
+}
+.profileUploadIcon:hover {
+    cursor: pointer;
+}
+
+.profilePicture:hover {
+    cursor: pointer;
+}
+#file-input {
+    display: none;
+}
+.account-form {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-gap: 5px;
+    align-items: center;
+}
+input {
+    padding: 20px;
+    background: #adecff;
+    border: none;
+}
+label {
+    color: #ffffff;
+}
+button {
+    grid-column-start: 2;
+    padding: 20px;
+    font-size: 1.2em;
+    background: #adecff;
+    border: none;
+}
+button:hover {
+    cursor: pointer;
+    background: #43d3ff;
+}
+.content {
+    margin: 0 auto;
+    width: 40vw;
+}
+.account-form-holder {
+    flex: 100%;
+}
+.account-welcome {
+    flex: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+h1 {
+    font-size: 2em;
+    color: #d84115;
+}
+em {
+    color: red;
+}

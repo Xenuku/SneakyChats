@@ -1,0 +1,32 @@
+<div class="content">
+    <div class="account-welcome">
+        <h1>Hello, {{username}}</h1>
+        <label for="file-input">
+            <img class="profilePicture" [src]="profilePicture || 'assets\/default.jpg'">
+            <fa-icon class="profileUploadIcon" [icon]="['fas', 'file-upload']" ></fa-icon>
+        </label>
+        <input 
+            id="file-input" 
+            #fileInput 
+            type="file" 
+            accept="image/*" 
+            (change)="uploadProfilePicture(fileInput.files)"
+        >
+    </div>
+    <div class="account-form-holder">
+        <form #f="ngForm" (ngSubmit)="updateUser(f)">
+            <div class="account-form">
+                <label for="username">Username</label>
+                <input type="text" [(ngModel)]="username" name="username">
+                <label for="email">Email</label>
+                <input type="email" [(ngModel)]="email" name="email" ngModel>
+                <label for="password">New password</label>
+                <input type="password" ngModel name="password">
+                <label for="confirm_password">Confirm password</label>
+                <input type="password" ngModel name="confirm_password">
+                <button type="submit">Update</button>
+                <em>{{message}}</em>
+            </div>
+        </form>
+    </div>
+</div>

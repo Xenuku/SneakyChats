@@ -1,0 +1,52 @@
+<div class="content">
+    <aside>
+        <nav>
+            <ul>
+                <h2>Administration</h2>
+                <li (click)="toggleView('adminHome')">
+                    <fa-icon [icon]="['fas', 'home']" [fixedWidth]="true"></fa-icon> Home
+                </li>
+                <li *ngIf="groupadmin" (click)="toggleView('userManagement')">
+                    <fa-icon [icon]="['fas', 'users-cog']" [fixedWidth]="true"></fa-icon> User Manager
+                </li>
+                <li *ngIf="groupadmin" (click)="toggleView('groupManagement')">
+                    <fa-icon [icon]="['fas', 'list']" [fixedWidth]="true"></fa-icon> Group Manager
+                </li>
+                <li *ngIf="groupadmin" (click)="toggleView('channelManagement')">
+                    <fa-icon [icon]="['fas', 'comments']" [fixedWidth]="true"></fa-icon> Channel Manager
+                </li>
+                <span *ngIf="moderatorGroups">
+                <li *ngIf="moderatorGroups.length > 0" (click)="toggleView('moderatorPanel')">
+                    <fa-icon [icon]="['fas', 'cog']" [fixedWidth]="true"></fa-icon> Moderator
+                </li>
+                </span>
+            </ul>
+        </nav>
+    </aside>
+    
+    <div class="admin-panel" *ngIf="currentView === 'adminHome'">
+        <div class="panel server-info">
+            <h1>Welcome to Sneaky Chat Management</h1>
+            <p>
+                There are <span class="highlight">{{userCount}} users</span> that have sent a total of 
+                <span class="highlight">{{messageCount}} messages</span> across <span class="highlight">{{groupCount}} groups.</span>
+            </p>
+            <p>
+                Depending on your access level, you can modify users and groups 
+                by using the links to the left.
+            </p>
+        </div>
+    </div>
+    <div class="admin-panel" *ngIf="currentView === 'userManagement'">
+        <app-usermanager [level]='level' [users]='users' [groups]='groups'></app-usermanager>
+    </div>
+    <div class="admin-panel" *ngIf="currentView === 'groupManagement'">
+        <app-groupmanager [level]='level' [users]='users' [groups]='groups'></app-groupmanager>
+    </div>
+    <div class="admin-panel" *ngIf="currentView === 'channelManagement'">
+        <app-channelmanager [users]='users' [groups]='groups' [level]='level'></app-channelmanager>
+    </div>
+    <div class="admin-panel" *ngIf="currentView === 'moderatorPanel'">
+        <app-moderatorpanel [moderatorGroups]='moderatorGroups' [users]='users'></app-moderatorpanel>
+    </div>
+</div>

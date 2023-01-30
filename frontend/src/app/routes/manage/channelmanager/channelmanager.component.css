@@ -1,0 +1,84 @@
+h1 {
+    font-size: 2em;
+    color: #ff7043;
+    margin-bottom: 10px;
+}
+h3 {
+    color: #ff7043;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+h2 {
+    font-size: 1.8em;
+}
+h3, aside li {
+    font-size: 1.5em;
+}
+h4 {
+    font-size: 1.2em;
+}
+em {
+    font-style: italic;
+}
+
+.channelManager ul li {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-gap: 5px;
+    align-items: center;
+    margin-top: 5px;
+}
+.channelManager ul {
+    margin-bottom: 5px;
+}
+.channel-name {
+    font-size: 1.2em;
+}
+.channels {
+    color: #ffffff;
+}
+.channelManagerFormControls h1 {
+    margin-bottom: 5px;
+}
+.channelManagerFormControls label {
+    font-size: 1.8em;
+}
+.channelManagerFormControls select {
+    padding: 10px;
+}
+.channelManager-addNew input {
+    padding: 5px;
+}
+.channelManagerMessage {
+    margin: 5px 0;
+}
+.deleteChannelIcon:hover {
+    cursor: pointer;
+    color: red;
+}
+
+input, select {
+    background: #adecff;
+    border: none;
+    margin-right: 10px;
+}
+label {
+    color: #d84115;
+    margin-right: 10px;
+}
+fa-icon {
+    color: #adecff;
+}
+button {
+    background: #adecff;
+    border: none;
+    padding: 2px 20px;
+    margin-top: 10px;
+}
+button:hover {
+    cursor: pointer;
+    background: #43d3ff;
+}
+.channelManagerMessage {
+    color: white;
+}

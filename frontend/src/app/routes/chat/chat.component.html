@@ -1,0 +1,72 @@
+<div class="content">
+    <aside>
+        <nav>
+            <ul class="rooms">
+                <h2 class="global-channels">Global Channels</h2>
+                <h4 class="global-room" (click)="changeRoom('Global_Main', 'Main')"><fa-icon [icon]="['fas', 'comment']" [fixedWidth]="true"></fa-icon> Main (Global)</h4>
+                <h4 class="global-room" (click)="changeRoom('Global_Support', 'Support')"><fa-icon [icon]="['fas', 'comment']" [fixedWidth]="true"></fa-icon> Support (Global)</h4>
+                <hr class="channel-sep" />
+                <h2 class="yourgroups">Group Channels</h2>
+                <span class="groups-holder" *ngFor="let group of rooms">
+                    <h3 class="group-header"><fa-icon [icon]="['fas', 'comments']" [fixedWidth]="true"></fa-icon> {{group.group}}</h3>
+                    <h4 *ngFor="let channel of group.channels;" style="cursor: pointer;" (click)="changeRoom(group.group+ '_' +channel, channel)"><fa-icon [icon]="['fas', 'comment']" [fixedWidth]="true"></fa-icon> {{channel}}</h4>
+                </span>
+            </ul>
+        </nav>
+    </aside>
+    <div class="chat-container">
+        <header class="chat-header">
+            <h1>Room: {{currentChannel}}</h1>
+        </header>
+        <main class="chat">
+            <div class="messaging">
+                <div class="chat-messages" id="messageholder" #messageHolder>
+                    <div class="message" *ngFor="let message of messages">
+                        <p class="metadata">
+                            <span><img [src]="message.profile_picture || 'assets\/default.jpg'" /></span>
+                            <span class="message-username">{{message.username}}</span>
+                        </p>
+                        <span class="message-time">({{message.time}})</span>
+                        <span *ngIf="message.image" class="message-text message-has-image"> <img class="chat-image" onclick="window.open(''), '_blank'" src="{{message.image}}"></span>
+                        <span *ngIf="message.text" class="message-text"><span class="message-colon">: </span>{{message.text}}</span>
+                    </div>
+                    <!-- History loaded from database for current room, chat messages appear here-->
+                </div>
+                <div class="chat-users">
+                    <h2 class="user-header"><fa-icon [icon]="['fas', 'users']" [fixedWidth]="true"></fa-icon> Users Online</h2>
+                    <div class="users" *ngFor="let user of users">
+                        <p><fa-icon [icon]="['fas', 'user']" [fixedWidth]="true"></fa-icon> {{user}}</p>
+                    </div>
+                </div>
+            </div>
+                <div class="new-message-holder">
+                    <form #f="ngForm" (ngSubmit)="sendMessage(f)" id="new-message" novalidate>
+                        <label for="chatImage"> 
+                            <fa-icon class="fileicon" [icon]="['fas', 'upload']" [fixedWidth]="true"></fa-icon>
+                        </label>
+                        <input 
+                            class="chatImage" 
+                            id="chatImage" 
+                            #chatImageInput
+                            name="chatImage" 
+                            type="file"
+                            accept="image/*" 
+                            (change)="chatImageSelected(chatImageInput.files)"
+                        >
+                        <input
+                            id="message"
+                            type="text"
+                            name="message"
+                            placeholder="Enter Message"
+                            required
+                            autocomplete="off"
+                            ngModel
+                        />
+                        <input id="send-message" type="submit" value="Send" />
+                    </form>
+                </div>
+        </main>
+        
+    </div>
+</div>
+<script src="/socket.io/socket.io.js"></script>

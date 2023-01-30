@@ -1,0 +1,61 @@
+h1 {
+    font-size: 2em;
+    color: #ff7043;
+    margin-bottom: 10px;
+}
+h3 {
+    color: #ff7043;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+h2 {
+    font-size: 1.8em;
+}
+h3, aside li {
+    font-size: 1.5em;
+}
+h4 {
+    font-size: 1.2em;
+}
+em {
+    font-style: italic;
+    color: #ffffff;
+}
+input, select {
+    background: #adecff;
+    border: none;
+    margin-right: 10px;
+}
+label {
+    color: #d84115;
+    margin-right: 10px;
+}
+fa-icon {
+    color: #adecff;
+}
+button {
+    background: #adecff;
+    border: none;
+    padding: 2px 20px;
+    margin-top: 10px;
+}
+button:hover {
+    cursor: pointer;
+    background: #43d3ff;
+}
+.grid {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-gap: 15px;
+    margin-bottom: 10px;
+}
+hr {
+    border: none;
+    height: 10px;
+    color: #121212;
+    background-color: #121212;
+    margin-left: -10px;
+}
+.response-message {
+    color: #ffffff;
+}

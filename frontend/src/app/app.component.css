@@ -1,0 +1,48 @@
+header {
+    display: flex;
+    padding-left: 2.5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    background: #1e1e1e;
+}
+html {
+    min-height: 100vh;
+}
+aside {
+    background: red;
+}
+
+.main-nav {
+    padding-top: 0.5%;
+    padding-right: 2.5%;
+}
+.main-nav ul {
+    list-style: none;
+    display: inline-flex;
+    margin-right: 10px;
+}
+.main-nav a {
+    margin-left: 10px;
+    font-size: 1.2em;
+    color: #ffffff;
+}
+.main-nav a:hover {
+    color: #43d3ff;
+}
+.site-title a, .main-nav a {
+    text-decoration: none;
+}
+.site-title a {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #FF7043;
+}
+.site-title:visted {
+    color: #FF7043;
+}
+
+* {
+    font-family: 'Urbanist', sans-serif;
+}

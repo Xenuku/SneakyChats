@@ -1,0 +1,29 @@
+<div class="panel">
+    <form #f="ngForm" class="addNewGroupForm" (ngSubmit)="addGroup(f)">
+        <h1>Add Group</h1>
+        <label for="newGroupName">Name:</label>
+        <input type="text" [(ngModel)]="newGroupName" name="newGroupName">
+        <h3>Channels</h3>
+        <ul class="channel-to-add">
+            <li *ngIf="newChannels.length === 0">No channels yet!</li>
+            <li *ngFor="let channel of newChannels">{{channel}}</li>
+        </ul>
+        <div class="newGroupChannelsLabel"><label for="newGroupChannels"><em>Add Channels to:</em> {{newGroupName}}</label></div>
+        <input type="text" name="newGroupChannelName" [(ngModel)]="newGroupChannelName"><a (click)="addToNewGroupChannels(newGroupChannelName)"><fa-icon [icon]="['fas', 'plus']" [fixedWidth]="true"></fa-icon></a>
+        <div><button type="submit">Add Group</button></div>
+        <strong>{{responseMessage}}</strong>
+    </form>
+    <hr>
+    <form #deleteGroupForm="ngForm" (ngSubmit)="deleteGroup(deleteGroupForm)">
+        <h1>Delete Group</h1>
+        <select ngModel ng-model="select" name="group">
+            <option 
+                *ngFor="let group of groups" 
+                [value]="group.group"
+            >{{group.group}}</option>
+        </select>
+        <button type="submit">Delete Group</button>
+        <strong>{{deletedGroupMessage}}</strong>
+    </form>
+       
+</div>

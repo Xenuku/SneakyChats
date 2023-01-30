@@ -1,0 +1,81 @@
+h1 {
+    font-size: 2em;
+    color: #ff7043;
+    margin-bottom: 10px;
+}
+h2 {
+    font-size: 1.6em;
+}
+h3, aside li {
+    font-size: 1.5em;
+}
+h3 {
+    color: #ff7043;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+h4 {
+    font-size: 1.2em;
+}
+em {
+    font-style: italic;
+}
+
+.editUserGroupsSelectors, .newUserBoxes, .editLevelForm {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-gap: 15px;
+}
+hr {
+    border: none;
+    height: 10px;
+    color: #121212;
+    background-color: #121212;
+    margin-left: -10px;
+}
+strong {
+    color: red;
+    margin-left: 10px;
+}
+
+input, select {
+    background: #adecff;
+    border: none;
+    margin-right: 10px;
+}
+label {
+    color: #d84115;
+    margin-right: 10px;
+}
+button {
+    background: #adecff;
+    border: none;
+    padding: 2px 20px;
+    margin-top: 10px;
+}
+button:hover {
+    cursor: pointer;
+    background: #43d3ff;
+}
+.add-user-level {
+    margin-top: 10px;
+}
+.add-user-level input {
+    margin-bottom: 10px;
+}
+.groupManagement em {
+    color: #ffffff;
+}
+.channel-select {
+    width: 120px;
+}
+.currentLevel {
+    padding-top: 5px;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+.usermanagermessage {
+    color: #ffffff;
+}
+
+/* labels: #d84115; */

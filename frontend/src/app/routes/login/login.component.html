@@ -1,0 +1,17 @@
+<div class="content">
+    <div class="login-form">
+            <h1>Sneak inside to begin chatting!</h1>
+            <div class="form-holder">
+                <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+                    <label for="username">Username</label>
+                    <input type="text" id="login" name="username" placeholder="YourUserName" ngModel required #first="ngModel">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password" ngModel required>
+                    <input class='submit-login' type="submit" value="Log In">
+                </form>
+            </div>
+            <div class="error" *ngIf="error === true">
+                <p style="color: red; font-weight: bold">Wrong username or password</p>
+            </div>
+    </div>
+</div>

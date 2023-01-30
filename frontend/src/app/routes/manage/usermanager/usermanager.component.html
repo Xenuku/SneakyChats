@@ -1,0 +1,146 @@
+<div class="panel">
+    <form #f="ngForm" (ngSubmit)="addUser(f)">
+        <h1>Add New User</h1>
+        <div class="newUserBoxes">
+            <label for="username">Username: </label>
+            <input placeholder="Username" type="text" ngModel name="username">
+            <label for="password">Password: </label>
+            <input placeholder="****************" type="password" ngModel name="password">
+            <label for="email">Email: </label>
+            <input placeholder="user@theirdomain.com" type="email" ngModel name="email">
+        </div>
+        <div *ngIf="superadmin">
+            <div class='add-user-level newUserBoxes'>
+                <div>
+                    <label>User level:</label>
+                </div>
+                <div>
+                    <label>
+                        <input 
+                            ngModel 
+                            type="radio" 
+                            value="user" 
+                            name="level" 
+                            [(ngModel)]="userLevel"
+                        >
+                    User</label><br>
+                    <label>
+                        <input 
+                            ngModel 
+                            type="radio" 
+                            value="superadmin" 
+                            name="level" 
+                            [(ngModel)]="userLevel"
+                        >
+                    Super Admin</label><br>
+                    <label>
+                        <input 
+                            ngModel 
+                            type="radio" 
+                            value="group_admin" 
+                            name="level" 
+                            [(ngModel)]="userLevel"
+                        >
+                    Group Admin</label>
+                </div>
+            </div>
+        </div>
+        <button type="submit">Add User</button>
+        <strong>{{addUserMessage}}</strong>
+    </form>
+    <hr />
+
+    <form #eUF="ngForm" (ngSubmit)="editUsersGroups(eUF)">
+        <h1>Edit User's Groups</h1>
+        <span class="editUserGroupsSelectors">
+            <div>
+                <label for="user">User: </label>
+                <select ngModel ng-model="select" name="user">
+                    <option 
+                        *ngFor="let user of users" 
+                        [value]="user.username" 
+                        (click)="setSelectedUser(user.username)"
+                    >{{user.username}}</option>
+                </select>
+            </div>
+            <div *ngIf="user">
+                <label for="group">Group: </label>
+                <select ngModel ng-mode="select" name="group">
+                    <option 
+                        *ngFor="let group of groups" 
+                        [value]="group.group" 
+                        (click)="setSelectedUserGroup(group.group)"
+                    >{{group.group}}</option>
+                </select>
+            </div>
+        </span>
+        <div class="groupManagement" *ngIf="selectedGroup">
+            <h3>Changing access for {{user.username}} in {{selectedGroup.group}} </h3>
+            <div class="editUserGroupsSelectors">
+                <label for="inGroup">Can access group:</label>
+                <select [(ngModel)]="inGroup" ng-select="select" name="inGroup">
+                    <option [ngValue]="inGroup">{{inGroup}}</option>
+                    <option [ngValue]="!inGroup">{{!inGroup}}</option>
+                </select>
+            
+                <label for="roleInGroup">Role in group:</label>
+                <select [(ngModel)]="user.groups.role" ng-select="select" name="roleInGroup">
+                    <option *ngIf="superadmin">Admin</option>
+                    <option>member</option>
+                    <option>Moderator</option>
+                </select>
+            </div>
+            <h3>Channel Access</h3>
+            <div>
+                <em>Hold CTRL to select multiple channels, if a channel is not selected, the user will not have access to it.</em><br><br>
+                <select ngModel ng-select="select" class="channel-select" name="channels" multiple>
+                    <option *ngFor="let channel of selectedGroup.channels">{{channel}}</option>
+                </select>
+            </div>
+            <div class="usermanagermessage">{{editUserMessage}}</div>
+            <button type="submit">Modify User</button>
+        </div>
+    </form>
+    <hr *ngIf="superadmin" />
+
+    <form #editUserLevels="ngForm" *ngIf="superadmin" (ngSubmit)="editUser(editUserLevels)">
+        <h1>Edit User's Level</h1>
+        <span class="editLevelForm">
+            <div>
+                <label for="user">User: </label>
+                <select ngModel ng-model="select" name="user">
+                    <option 
+                        *ngFor="let user of users" 
+                        [value]="user.username" 
+                        (click)="setSelectedEditUser(user.username)"
+                    >{{user.username}}</option>
+                </select>
+                <em *ngIf="selectedEditUser" class="currentLevel">Current level: {{selectedEditUser.level}}</em>
+            </div>
+        </span>
+        <div *ngIf="selectedEditUser">
+            <label>New Level: </label>
+            <select ngModel ng-select="select" name="editUserLevel">
+                <option value="superadmin">Super Admin</option>
+                <option value="group_admin">Group Admin</option>
+                <option value="user">User</option>
+            </select>
+            <button type="submit">Edit User</button>
+        
+            <br>
+            <div class="usermanagermessage">{{editLevelMessage}}</div>
+        </div>
+    </form>
+    <hr *ngIf="superadmin" />
+    <form #deleteUserForm="ngForm" *ngIf="superadmin" (ngSubmit)="deleteUser(deleteUserForm)">
+        <h1>Delete User</h1>
+        <select ngModel ng-model="select" name="user">
+            <option 
+                *ngFor="let user of users" 
+                [value]="user.username"
+            >{{user.username}}</option>
+        </select>
+        <button type="submit">Delete user</button>
+        <strong>{{deleteMessage}}</strong>
+    </form>
+</div>

@@ -1,0 +1,28 @@
+<div class="panel">
+    <form #f="ngForm" (ngSubmit)="addChannel(f)">
+        <div class="channelManagerFormControls">
+            <h1>Manage Channels</h1>
+            <label for="group">Group: </label>
+            <select ngModel ng-mode="select" name="group">
+                <option 
+                    *ngFor="let group of groups" 
+                    [value]="group.group" 
+                    (click)="setSelectedGroup(group.group)"
+                >{{group.group}}</option>
+            </select>
+        </div>
+        <div class="channelManager" *ngIf="selectedGroup">
+            <ul class="channels">
+                <li *ngFor="let channel of selectedGroup.channels">
+                    <fa-icon class="deleteChannelIcon" [icon]="['fas', 'trash-alt']" [fixedWidth]="true" (click)="deleteChannel(channel)"></fa-icon>
+                    <span class="channel-name">{{channel}}</span>
+                </li>
+            </ul>
+            <div class="channelManagerMessage">{{message}}</div>
+            <span class="channelManager-addNew">
+                <input placeholder="Add Channel" [(ngModel)]="newChannelName" name="newChannelName" type="text">
+            </span>
+            <button>Add Channel</button>
+        </div>
+    </form>
+</div>

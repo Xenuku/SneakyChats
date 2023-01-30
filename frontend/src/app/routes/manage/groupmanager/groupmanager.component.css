@@ -1,0 +1,95 @@
+h1 {
+    font-size: 2em;
+    color: #ff7043;
+    margin-bottom: 10px;
+}
+h2 {
+    font-size: 1.8em;
+}
+h3, aside li {
+    font-size: 1.5em;
+}
+hr {
+    border: none;
+    height: 10px;
+    color: #121212;
+    background-color: #121212;
+    margin-left: -10px;
+}
+h3 {
+    color: #ff7043;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+h4 {
+    font-size: 1.2em;
+}
+em {
+    font-style: italic;
+}
+
+.groupManagement input, .groupManagement select {
+    padding: 15px;
+}
+
+.manageUserChannelAccess {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-gap: 5px;
+    align-items: center;
+}
+
+.addNewGroupForm h1 {
+    margin-bottom: 5px;
+}
+.addNewGroupForm input {
+    padding: 10px;
+}
+.addNewGroupForm ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin: 20px 0px 20px 20px;
+}
+.addNewGroupForm strong {
+    font-weight: bold;
+}
+.newGroupChannelsLabel {
+    margin-bottom: 10px;
+}
+.addNewGroupForm button {
+    padding: 20px;
+    font-size: 20px;
+}
+input, select {
+    background: #adecff;
+    border: none;
+    margin-right: 10px;
+}
+label {
+    color: #d84115;
+    margin-right: 10px;
+}
+fa-icon {
+    color: #adecff;
+}
+button {
+    background: #adecff;
+    border: none;
+    padding: 2px 20px;
+    margin-top: 10px;
+}
+button:hover {
+    cursor: pointer;
+    background: #43d3ff;
+}
+.channel-to-add {
+    color: #ffffff;
+}
+em {
+    color: #ff7043;
+}
+strong {
+    color: white;
+    margin-left: 10px;
+}

@@ -1,0 +1,16 @@
+<div class="container">
+  <header>
+    <span class="site-title"><a routerLink="/">Sneaky Chat</a></span>
+    <nav class='main-nav'>
+      <ul *ngIf="isLoggedIn === true">
+        <!-- Logged in -->
+        <li><a routerLink="/chat">Chat</a></li>
+        <li><a routerLink="/account">Account</a></li>
+        <li *ngIf="canManage"><a routerLink="/manage">Manage</a></li>
+        <li><a href="#" (click)="logout()">Logout</a></li>
+        <!-- /Logged in -->
+      </ul>
+    </nav>
+  </header>
+  <router-outlet></router-outlet>
+</div>
